@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>🦆 HTML Executor 🦆</title>
+        
+        <script>
+            window.addEventListener('beforeunload', AntiClose);
+            
+            function AntiClose(event) {
+                event.preventDefault();
+                event.returnValue = 'Anti Close Popup'; 
+            }
+        </script>
+        <style>
+            body {
+                background-color: #f0f8ff;
+                font-family: monospace;
+                text-align: center;
+                margin-top: 50px;
+            }
+            
+            input[type="file"] {
+                color: transparent;
+                width: auto;
+                position: fixed;
+                bottom: 9999px;
+                right: 9999px;
+            }
+            
+            button {
+                background-color: #ffee00;
+                padding: 15px 20px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                border-radius: 30px;
+                border: none;
+                cursor: pointer;
+                transition: 0.15s ease;
+            }
+            
+            button:hover {
+                background-color: #ffc800;
+            }
+            
+            #Credits {
+                font-size: 20px;
+                color: #a5d4ff;
+                position: fixed;
+                bottom: -18px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <button id="triggerButton">📂 Upload & Run HTML File</button>
+        
+        
+        <input type="file" id="hiddenFileInput" name="uploadedFile" accept="text/plain, text/html, .txt, .html">
+        
+        <p id="Credits">Made By QuackDaDuck v1.3.2</p>
+        
+        <script>
+            document.getElementById("triggerButton").addEventListener("click", clickUpload);
+            
+            document.getElementById("hiddenFileInput").addEventListener("change", AponUpload);
+            
+            function clickUpload(event) {
+                document.getElementById("hiddenFileInput").click();
+            }
+            
+            async function AponUpload(event) {
+                const file = event.target.files[0];
+                const data = await file.text();
+                
+                const AntiClosingHeader = 
+'<script>\n' +
+'    window.addEventListener("beforeunload", AntiClose);\n' +
+'    function AntiClose(event) {\n' +
+'        event.preventDefault();\n' +
+'        event.returnValue = "Anti Close Popup";\n' +
+'    }\n' +
+'<\/script>';
+                
+                const FinalData = AntiClosingHeader + data;
+                
+                console.log(FinalData);
+                
+                
+                document.open();
+                document.write(FinalData);
+                document.close();
+            }
+        </script>
+    </body>
+</html>
+
+
+

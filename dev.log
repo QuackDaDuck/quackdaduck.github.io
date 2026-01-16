@@ -1,0 +1,32 @@
+Website Development Log – HTML Executor
+Developer: QuackDaDuck
+Current Version: v1.3.2
+Project Type: Static HTML site
+
+v1.0.0 – First Build (Prototype via data: URI)
+- Built and shared as a data:text/html link.
+- Console and upload logic were messy but barely functional.
+- No real structure, no automatic behavior, and no hosting.
+- Used as proof of concept only.
+- Known issues: inconsistent behavior, no feedback, and no anti-close protection.
+
+v1.2.0 – Full Working Patch
+- Same delivery method (data: link), but cleaned up the core logic.
+- File upload and HTML execution worked end-to-end.
+- Added script injection via TempFunction() or similar logic.
+- Included beforeunload anti-close handler for safety.
+- Console printed code or logs cleanly.
+- First version that felt usable.
+
+v1.3.0 – Public Hosting and Real Launch
+- Moved to a real URL (hosted website).
+- No longer required data: tricks.
+- Cleaner startup behavior added.
+- File input could be triggered from button reliably.
+- Site was now usable from anywhere, not just locally.
+
+v1.3.2 – Startup Automation and Versioning Patch
+- Footer includes visible version number ("v1.3.2").
+- Button styling improved with hover states.
+- Code injection still includes anti-close script block.
+- Final polish patch before future expansion.
