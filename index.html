@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script>
+            const credScreen = `<style>#Credits {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 25px;color: #a5d4ff;pointer-events: none;}body {background-color: #f0f8ff;font-family: monospace;}</style>\n<p id="Credits">Made By QuackDaDuck v2.0.0</p>`
+
+            window.addEventListener('beforeunload', AntiClose);
+            
+            function AntiClose(event) {
+                event.preventDefault();
+                event.returnValue = 'Anti Close Popup'; 
+            }
+        </script>
+        
+        <style>
+        
+            body {
+                background-color: #ffffff;
+                font-family: monospace;
+            }
+
+            #Title {
+                font-size: 1.75rem;
+                font-weight: bold;  
+                color:#000000;
+
+                position: absolute;
+                margin: 0;
+                top: 50%;
+                left: 5px;
+                transform: translateY(-50%);
+                line-height: 0.8;
+            }
+            
+            #TopBar {
+                width: 100%;
+                height: 40px;
+                top: 0px;
+                left: 0px;
+                background: #afd8ff;
+                position: absolute;
+            }
+
+            #Upload {
+                background-color: #ffee00;
+                padding: 5px 12px;
+                font-size: 0.75rem;
+                font-weight: bold;
+                border-radius: 30px;
+                border: outset #000000;
+                border: solid;
+                transition: 0.30s ease;
+
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 5px;
+            }
+                
+            #Upload:hover {
+                background-color: #ffc800;
+            }
+            
+            #MainPage {
+                top: 40px;
+                left: 0px;
+                position: absolute;
+                
+                width: 100%;
+                height: calc(100vh - 60px);
+                
+            }
+                        
+            input[type="file"] {
+                color: transparent;
+                width: auto;
+                position: fixed;
+                bottom: 9999px;
+                right: 9999px;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <input type="file" id="hiddenFileInput" name="uploadedFile" accept="text/plain, text/html, .txt, .html">
+        
+        <div id="TopBar">
+            <p id="Title">HTML exec</p>    
+            <button id="Upload">Upload File</button>
+        </div>
+        
+        <iframe id=MainPage title="Embedded HTML Content"></iframe>
+        
+        <script>
+            document.getElementById("Upload").addEventListener("click", Upload);
+            document.getElementById("hiddenFileInput").addEventListener("change", UponUpload);
+            
+            
+            function Upload(event) {
+                document.getElementById("hiddenFileInput").click();
+            }
+            
+            async function UponUpload(event){
+                const file = event.target.files[0];
+                const data = await file.text();
+                
+                document.getElementById("MainPage").srcdoc = data;
+            }
+
+
+            document.getElementById("MainPage").srcdoc = credScreen;
+        </script>
+    </body>
+</html>
