@@ -30,3 +30,15 @@ v1.3.2 – Startup Automation and Versioning Patch
 - Button styling improved with hover states.
 - Code injection still includes anti-close script block.
 - Final polish patch before future expansion.
+
+
+v2.0.0 – Runtime Architecture Rewrite (Current Version)
+- Replaced destructive document.open() execution engine with iframe srcdoc runtime model.
+- Introduced persistent application-style UI (top bar + embedded workspace).
+- Added ability to change uploaded HTML without destroying the executor interface.
+- Separated executor UI from executed content via iframe.
+- Implemented centered boot screen with version branding.
+- Improved layout structure and visual hierarchy.
+- Increased runtime stability and reduced full-page resets.
+- Legacy document-rewrite engine preserved as legacy.html.
+
