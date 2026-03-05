@@ -67,7 +67,10 @@
                 position: absolute;
                 
                 width: 100%;
-                height: calc(100vh - 60px);
+                height: calc(100vh - 40px);
+                
+                border:none;
+                display:block;
                 
             }
                         
@@ -104,6 +107,8 @@
             async function UponUpload(event){
                 const file = event.target.files[0];
                 const data = await file.text();
+                if (!file) {return;}
+                
                 
                 document.getElementById("MainPage").srcdoc = data;
             }
